@@ -1,0 +1,43 @@
+{{#if article}} 
+    <div class="card">
+        <div class='card-header'>
+          <h3>{{article.headline}}</h3>
+        </div>
+        <div class="card-body">
+          <p>{{article.summary}}</p>
+          <a href="{{article.url}}" target="_blank">Read More</a>
+        </div>
+    </div>
+  {{#each article.comments}}
+    <div class="card border-secondary mb-2">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">
+          {{this.body}}
+        </p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">
+          <button class="btn-info float-right ml-1 delete-comment" comment-id="{{this._id}}">Delete</button>
+        </small>
+      </div> 
+    </div>
+  {{/each}}
+
+
+    <div class="card">
+        <div class="card-header">Post a Comment</div>
+        <form action="/comment/{{article._id}}" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" placeholder="anonymous">
+            </div>
+        <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea class="form-control" name="body" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+{{/if}}

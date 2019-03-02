@@ -32,7 +32,7 @@ mongoose.connect("mongodb://localhost/peopleNews", { useNewUrlParser: true });
 
 
 //Routes
-require('./routes/scrapeRoutes')(app);
+require('./routes/commentRoutes')(app);
 require('./routes/articleRoutes')(app);
 
 app.get('/', (req, res) => {

@@ -36,7 +36,28 @@
   </div>
 </div>
 <div class="container-fluid article-container">
- 
+  {{#if article}}
+    {{#each article}}
+      <div class="card">
+        <div class='card-header'>
+          <h3>{{headline}}</h3>
+        </div>
+        <div class="card-body">
+          <p>{{summary}}</p>
+          <a href="{{url}}" target="_blank">Read More</a>
+        </div>
+        <div class="card-footer">
+          {{!-- <button class="save-btn">Save</button> --}}
+          <a href="/comment/{{_id}}">
+          <button class="commentBtn" data-id={{_id}}>Comment</button>
+          </a>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <h3>No Article</h3>
+
+  {{/if}}
   <div class="alert alert-warning text-center">
     <h4>Uh Oh. Looks like we don't have any new articles.</h4>
   </div>
