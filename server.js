@@ -30,13 +30,14 @@ app.set("view engine", "handlebars");
 require('./routes/commentRoutes')(app);
 require('./routes/articleRoutes')(app);
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/peopleNews";
 
 // Connect to the Mongo DB
-mongoose.connect(db.MONGODB_URI, { 
-  useNewUrlParser: true,
-  useCreateIndex: true 
-}).then(() => console.log(`Connected to MongoDB ${db.MONGODB_URI}`))
-  .catch(err => console.log(err));
+mongoose.connect(MONGODB_URI);
+//   useNewUrlParser: true,
+//   useCreateIndex: true 
+// }).then(() => console.log(`Connected to MongoDB ${db.MONGODB_URI}`))
+//   .catch(err => console.log(err));
   
   
   
