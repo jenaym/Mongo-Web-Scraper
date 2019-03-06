@@ -1,14 +1,9 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
-var axios = require("axios");
-var cheerio = require("cheerio");
-var morgan = require('morgan');
 
-// Require all models
-var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //Initalize Express
 var app = express();
@@ -28,7 +23,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/peopleNews", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/peopleNews", { useNewUrlParser: true });
 
 
 //Routes
@@ -36,25 +31,12 @@ require('./routes/commentRoutes')(app);
 require('./routes/articleRoutes')(app);
 
 
-// app.get('/', (req, res) => {
-//     res.render('index');
-// });
-
-// Routes
-// app.get("/", function (req, res) {
-//     db.Recipes.findAll({
-//         order: [
-//             ["rating", "DESC"]
-//         ],
-//         limit: 5
-//     }).then(function (recipes) {
-//         console.log(JSON.stringify(recipes));
-//         res.status(200).render("index", {
-//             msg: "Welcome!!",
-//             recipes: recipes
-//         });
-//     });
-
+// Connect to the Mongo DB
+mongoose.connect(db.MONGODB_URI, { 
+  useNewUrlParser: true,
+  useCreateIndex: true 
+}).then(() => console.log(`Connected to MongoDB ${db.MONGODB_URI}`))
+  .catch(err => console.log(err));
   
   
   
