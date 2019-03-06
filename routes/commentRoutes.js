@@ -46,6 +46,31 @@ module.exports = (app) => {
     });
 
 // Route to delete a Note.
+// app.delete("/comment/:id", function(req,res) {
+//     console.log("please delete");
+//         db.Comment.findOneAndDelete({
+//           _id: req.params.commentID
+//         })
+//         .then(comment => {
+//           db.Article.findOneAndUpdate({
+//             _id: comment.article
+//           }, {
+//             $pull: { comments: comment._id }
+//           }, {
+//             returnNewDocument: true
+//           })
+//           .populate("comments")
+//           .then(article => {
+//             res.render("comment", { 
+//               article: article,
+//             });
+//           })
+//           .catch(err => res.send(err));
+//         })
+//         .catch(err => res.send(err));
+//       });
+
+// Route to delete a Note.
 app.delete("/deleteComment/:id", function(req,res) {
     db.Comment.remove(
         {_id: req.params.id}
@@ -57,6 +82,8 @@ app.delete("/deleteComment/:id", function(req,res) {
         res.json(error);
     });
 });
+
+      
 
 // Route to return (unsave) an Article.
 app.put("/saved/:id", function(req, res) {

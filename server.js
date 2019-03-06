@@ -6,7 +6,7 @@ var cheerio = require("cheerio");
 var morgan = require('morgan');
 
 // Require all models
-//var db = require("./models");
+var db = require("./models");
 
 var PORT = 3000;
 
@@ -35,9 +35,11 @@ mongoose.connect("mongodb://localhost/peopleNews", { useNewUrlParser: true });
 require('./routes/commentRoutes')(app);
 require('./routes/articleRoutes')(app);
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
+
+// app.get('/', (req, res) => {
+//     res.render('index');
+// });
+
 // Routes
 // app.get("/", function (req, res) {
 //     db.Recipes.findAll({
