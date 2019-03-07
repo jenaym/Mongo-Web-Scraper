@@ -22,9 +22,6 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// Connect to the Mongo DB
-// mongoose.connect("mongodb://localhost/peopleNews", { useNewUrlParser: true });
-
 
 //Routes
 require('./routes/commentRoutes')(app);
@@ -34,13 +31,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/peopleNews";
 
 // Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
-//   useNewUrlParser: true,
-//   useCreateIndex: true 
-// }).then(() => console.log(`Connected to MongoDB ${db.MONGODB_URI}`))
-//   .catch(err => console.log(err));
-  
-  
-  
+
+    
   // Start the server
   app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");

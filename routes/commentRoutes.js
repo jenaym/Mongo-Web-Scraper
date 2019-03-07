@@ -1,7 +1,5 @@
-var express = require("express");
+
 const db = require('../models');
-const cheerio = require('cheerio');
-const axios = require('axios');
 
 module.exports = (app) => {
 
@@ -45,30 +43,6 @@ module.exports = (app) => {
       });
     });
 
-// Route to delete a Note.
-// app.delete("/comment/:id", function(req,res) {
-//     console.log("please delete");
-//         db.Comment.findOneAndDelete({
-//           _id: req.params.commentID
-//         })
-//         .then(comment => {
-//           db.Article.findOneAndUpdate({
-//             _id: comment.article
-//           }, {
-//             $pull: { comments: comment._id }
-//           }, {
-//             returnNewDocument: true
-//           })
-//           .populate("comments")
-//           .then(article => {
-//             res.render("comment", { 
-//               article: article,
-//             });
-//           })
-//           .catch(err => res.send(err));
-//         })
-//         .catch(err => res.send(err));
-//       });
 
 // Route to delete a Note.
 app.delete("/deleteComment/:id", function(req,res) {
